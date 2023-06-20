@@ -1,23 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
+import PatientForm from './Form.js';
+import PatientTable from './PatientTable'
+import { useState } from 'react';
 
 function App() {
+
+  const [patient, setPatient] = useState({
+    firstname: "",
+    lastname: "",
+    dateofbirth: "",
+    phonenumber: "",
+    emergencycontact: ""
+  });
+
+  const [patients, setPatients] = useState([]);
+
+  const handleChange = (event) => {
+    setPatient({ ...patient, [event.target.name]: event.target.value });
+  };
+
+  const addPatients = (patient) => {
+    setPatients([...patients, patient]);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addPatients(patient);
+    console.log(patient);
+
+    setPatient({firstname: "", lastname: "", dateofbirth: "", phonenumber: "", emergencycontact: ""});
+  };
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PatientForm patient={patient} onChange={handleChange} onClick={handleSubmit} />
+      <PatientTable patients={patients} />
     </div>
   );
 }
