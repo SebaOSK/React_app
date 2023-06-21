@@ -7,7 +7,7 @@ export default function PatientTable({ patients }) {
 
     patients.forEach((patient) => {
         rows.push(
-            <PatientRow patient={patient} key={patient.firstname + patient.lastname} />
+            <PatientRow patient={patient} key={patient.firstname + patient.lastname}/>
         )
     });
 

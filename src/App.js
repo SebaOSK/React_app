@@ -2,6 +2,8 @@ import './App.css';
 import PatientForm from './Form.js';
 import PatientTable from './PatientTable'
 import { useState } from 'react';
+import axios from 'axios';
+import GetAll from './GetAll';
 
 function App() {
 
@@ -36,6 +38,7 @@ function App() {
     <div className="App">
       <PatientForm patient={patient} onChange={handleChange} onClick={handleSubmit} />
       <PatientTable patients={patients} />
+      <GetAll />
     </div>
   );
 }

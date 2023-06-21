@@ -11,7 +11,7 @@ export default function PatientForm(props) {
                 <FormElement label="Phone Number: " type="number" name="phonenumber" value={props.patient.phonenumber} onChange={props.onChange} />
                 <FormElement label="Emergency Contact:" type="number" name="emergencycontact" value={props.patient.emergencycontact} onChange={props.onChange} />
 
-                <Button className="submit-button" type="submit" onClick={props.onClick} />
+                <Button className="submit-button" type="submit" onClick={props.onClick} text="Save"/>
         </div>
 
 
