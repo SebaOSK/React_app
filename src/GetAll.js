@@ -7,9 +7,7 @@ export default function GetAll() {
 
     const [patients, setPatients] = useState([]);
 
-    const addPatients = (patient) => {
-        setPatients([...patients, patient]);
-    };
+
 
     const getAll = (event) => {
         if (event) {
@@ -19,26 +17,24 @@ export default function GetAll() {
             .then(function (response) {
                 // handle success
                 const responseData = response.data.data;
+                
                 const mappedPatients = responseData.map((patient) => ({
-                  id: patient.id,
-                  firstname: patient.firstName,
-                  lastname: patient.lastName,
-                  dateofbirth: patient.dob,
-                  phonenumber: patient.phoneNumber,
-                  emergencycontact: patient.emergencyContact,
+                  FirstName: patient.firstName,
+                  LastName: patient.lastName,
+                  DOB: patient.dob,
+                  PhoneNumber: patient.phoneNumber,
+                  EmergencyContact: patient.emergencyContact,
                 }));
-                addPatients(mappedPatients);
+                setPatients(mappedPatients);
             });
 
     };
-
-
 
     return (
         <div className="getall-container">
             <SubmitButton className="get-all-button" type="submit" onClick={getAll} text="GetAll" />
             {patients.length > 0 ? (
-                <PatientTable patients={patients[0]} />
+                <PatientTable patients={patients} />
             ) : (
                 <p>No patients found.</p>
             )}

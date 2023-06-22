@@ -5,11 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GetAll from './GetAll';
 import GetById from './GetById'
+import Post from './Post.js';
+import Delete from './Delete';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <GetById />
+    <Delete />
   </React.StrictMode>
 );
 
