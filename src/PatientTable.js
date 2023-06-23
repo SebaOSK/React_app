@@ -1,5 +1,4 @@
 import PatientRow from './PatientRow';
-import './PatientTable.css';
 
 export default function PatientTable({ patients }) {
 

@@ -3,7 +3,7 @@ import PatientForm from './Form';
 import PatientTable from './PatientTable';
 import SubmitButton from './SubmitButton.js';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Update() {
     // use state for handling get request
@@ -22,18 +22,20 @@ export default function Update() {
         axios.get(`https://localhost:44369/api/Hospital/?Id=${id}`)
             .then(function (response) {
                 // handle success
-                const mappedPatient = response.data.map((patient) => ({
+                const mappedPatient = response.data.map((patient, index) => ({
                     firstName: patient.firstName,
                     lastName: patient.lastName,
                     DOB: patient.dob,
                     phoneNumber: patient.phoneNumber,
                     emergencyContact: patient.emergencyContact,
+                    index: index
                 }));
 
                 setPatient(mappedPatient);
                 console.log(patient);
             });
     }
+    
 
     const [patientUpdate, setPatientUpdate] = useState({
         firstName: "",
@@ -46,6 +48,8 @@ export default function Update() {
     const handleChangeUpdate = (event) => (
         setPatientUpdate({ ...patientUpdate, [event.target.name]: event.target.value })
     );
+
+
 
     const submitUpdate = () => {
         const updatedPatient = { ...patientUpdate };

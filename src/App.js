@@ -1,8 +1,9 @@
 import './App.css';
 import PatientForm from './Form.js';
-import PatientTable from './PatientTable'
-import { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import GetAll from './GetAll';
 import GetById from './GetById';
 import Post from './Post';
@@ -12,21 +13,31 @@ import Update from './Update';
 function App() {
 
   return (
-    <div className="App">
-      <h3>Get all patients: </h3>
-      <GetAll />
-      <hr />
-      <h3>Get patient by ID: </h3>
-      <GetById />
-      <hr />
-      <h3>Add patient: </h3>
-      <Post />
-      <hr />
-      <h3>Update patient entry: </h3>
-      <Update />
-      <hr />
-      <h3>Delete patient: </h3>
-      <Delete />
+    <div>
+      <nav className='navbar navbar-expand navbar-dark bg-dark'>
+        <a href="/" className='navbar-brand'>
+          PatientsList
+        </a>
+        <div className='navbar-nav mr-auto'>
+          <li className='nav-item'>
+            <Link to={"/add"} className="nav-link">
+              Add
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link to={"/update"} className="nav-link">
+              Update
+            </Link>
+          </li>
+        </div>
+      </nav>
+      <div className='container mt-3'>
+        <Routes>
+          <Route path="/" element={<GetAll />} />
+          <Route path="/add" element={<Post />}/>
+          <Route path="/update" element={<Update />}/>
+        </Routes>
+      </div>
     </div>
   );
 }

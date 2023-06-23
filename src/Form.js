@@ -1,5 +1,4 @@
 import FormElement from './FormElement';
-import './PatientForm.css';
 import Button from './SubmitButton';
 
 export default function PatientForm(props) {
