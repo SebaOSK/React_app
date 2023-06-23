@@ -3,11 +3,11 @@ export default function PatientRow({patient}) {
     
     return (
         <tr>
-        <td>{patient.FirstName}</td>
-        <td>{patient.LastName}</td>
+        <td>{patient.firstName}</td>
+        <td>{patient.lastName}</td>
         <td>{patient.DOB}</td>
-        <td>{patient.PhoneNumber}</td>
-        <td>{patient.EmergencyContact}</td>
+        <td>{patient.phoneNumber}</td>
+        <td>{patient.emergencyContact}</td>
         </tr>
     );
 }

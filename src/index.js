@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import GetAll from './GetAll';
-import GetById from './GetById'
+import GetAll from './GetAll.js';
+import GetById from './GetById.js'
 import Post from './Post.js';
-import Delete from './Delete';
+import Delete from './Delete.js';
+import Update from './Update.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Delete />
+    <App />
   </React.StrictMode>
 );
 

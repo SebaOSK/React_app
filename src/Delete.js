@@ -54,7 +54,7 @@ export default function GetById() {
     return (
         <form>
             <FormElement label="Enter Id: " type="text" name="id" value={id.id} onChange={handleChange} />
-            <SubmitButton className="get-id-button" type="submit" onClick={deletePatient} text="Delete Patient" />
+            <SubmitButton className="submit-button" type="submit" onClick={deletePatient} buttontext="Delete Patient" />
             <PatientTable patients={patients} />
         </form>
 

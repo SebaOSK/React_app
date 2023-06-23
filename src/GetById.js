@@ -16,7 +16,7 @@ export default function GetById() {
         setId({ ...id, [event.target.name]: event.target.value })
     };
 
-    const getAll = (event) => {
+    const getById = (event) => {
         if (event) {
             event.preventDefault();
         }
@@ -25,11 +25,11 @@ export default function GetById() {
                 // handle success
                 const responseData = response.data;
                 const mappedPatients = responseData.map((patient) => ({
-                    FirstName: patient.firstName,
-                    LastName: patient.lastName,
+                    firstName: patient.firstName,
+                    lastName: patient.lastName,
                     DOB: patient.dob,
-                    PhoneNumber: patient.phoneNumber,
-                    EmergencyContact: patient.emergencyContact,
+                    phoneNumber: patient.phoneNumber,
+                    emergencyContact: patient.emergencyContact,
                 }));
                 setPatients(mappedPatients);
                 console.log(patients)
@@ -40,7 +40,7 @@ export default function GetById() {
     return (
         <form>
             <FormElement label="Enter Id: " type="text" name="id" value={id.id} onChange={handleChange} />
-            <SubmitButton className="get-id-button" type="submit" onClick={getAll} text="Get Patient" />
+            <SubmitButton className="submit-button" type="submit" onClick={getById} buttontext="Get Patient" />
             <PatientTable patients={patients} />
         </form>
 

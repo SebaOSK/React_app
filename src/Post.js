@@ -6,11 +6,11 @@ import axios from 'axios';
 function Post() {
 
     const [patient, setPatient] = useState({
-      FirstName: "",
-      LastName: "",
+      firstName: "",
+      lastName: "",
       DOB: "",
-      PhoneNumber: "",
-      EmergencyContact: ""
+      phoneNumber: "",
+      emergencyContact: ""
     });
   
     const [patients, setPatients] = useState([]);
@@ -34,13 +34,13 @@ function Post() {
       addPatients(patient);
       console.log(patients);
   
-      setPatient({FirstName: "", LastName: "", DOB: "", PhoneNumber: "", EmergencyContact: ""});
+      setPatient({firstName: "", lastName: "", DOB: "", phoneNumber: "", emergencyContact: ""});
     };
     
   
     return (
       <div className="App">
-        <PatientForm patient={patient} onChange={handleChange} onClick={handleSubmit} />
+        <PatientForm patient={patient} onChange={handleChange} onClick={handleSubmit} buttontext="Save"/>
         <PatientTable patients={patients} />
       </div>
     );

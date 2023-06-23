@@ -7,8 +7,6 @@ export default function GetAll() {
 
     const [patients, setPatients] = useState([]);
 
-
-
     const getAll = (event) => {
         if (event) {
             event.preventDefault();
@@ -16,23 +14,24 @@ export default function GetAll() {
         axios.get('https://localhost:44369/api/Hospital')
             .then(function (response) {
                 // handle success
-                const responseData = response.data.data;
-                
-                const mappedPatients = responseData.map((patient) => ({
-                  FirstName: patient.firstName,
-                  LastName: patient.lastName,
+                const mappedPatients = response.data.data.map((patient, index) => ({
+                  firstName: patient.firstName,
+                  lastName: patient.lastName,
                   DOB: patient.dob,
-                  PhoneNumber: patient.phoneNumber,
-                  EmergencyContact: patient.emergencyContact,
+                  phoneNumber: patient.phoneNumber,
+                  emergencyContact: patient.emergencyContact,
+                  index: index,
                 }));
                 setPatients(mappedPatients);
+                console.log(mappedPatients);
+                console.log(patients);
             });
 
     };
 
     return (
         <div className="getall-container">
-            <SubmitButton className="get-all-button" type="submit" onClick={getAll} text="GetAll" />
+            <SubmitButton className="submit-button" type="submit" onClick={getAll} buttontext="GetAll" />
             {patients.length > 0 ? (
                 <PatientTable patients={patients} />
             ) : (
