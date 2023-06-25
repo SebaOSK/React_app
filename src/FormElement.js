@@ -1,9 +1,9 @@
-export default function FormElement(props) {
+export default function FormElement({label, name, type, value, handleChange}) {
 
     return (
         <>
-        <label htmlFor={props.name}>
-            {props.label} <input type={props.type} id={props.name} name={props.name} value={props.value} onChange={props.onChange}/>
+        <label htmlFor={name}>
+            {label} <input type={type} id={name} name={name} value={value} onChange={handleChange}/>
         </label><br />
         </>
         
