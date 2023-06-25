@@ -1,13 +1,10 @@
 import axios from 'axios';
-import SubmitButton from './SubmitButton.js';
 import { useState, useEffect } from 'react'
 import PatientTable from './PatientTable.js'
 
 export default function GetAll() {
 
     const [patients, setPatients] = useState([]);
-
-    
 
     const getAllPatients = (event) => {
         if (event) {
@@ -29,25 +26,21 @@ export default function GetAll() {
                     index: index,
                 }));
                 setPatients(mappedPatients);
-                console.log(mappedPatients);
-                console.log(patients);
             });
     };
 
     useEffect(() => { getAllPatients(); }, []);
 
+    return (
+        <div className="getall-container">
 
+            {patients.length > 0 ? (
+                <PatientTable patients={patients} />
+            ) : (
+                <p>No patients found.</p>
+            )}
+        </div>
 
-return (
-    <div className="getall-container">
-        
-        {patients.length > 0 ? (
-            <PatientTable patients={patients} />
-        ) : (
-            <p>No patients found.</p>
-        )}
-    </div>
-
-)
+    )
 
 };

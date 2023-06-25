@@ -3,7 +3,7 @@ import PatientForm from './Form';
 import PatientTable from './PatientTable';
 import SubmitButton from './SubmitButton.js';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Update() {
     // use state for handling get request
@@ -32,7 +32,6 @@ export default function Update() {
                 }));
 
                 setPatient(mappedPatient);
-                console.log(patient);
             });
     }
     
@@ -54,28 +53,25 @@ export default function Update() {
     const submitUpdate = () => {
         const updatedPatient = { ...patientUpdate };
         for (const key in updatedPatient) {
-            console.log(key);
             if(updatedPatient.hasOwnProperty(key) && updatedPatient[key] === "") {
                 updatedPatient[key] = null;
             };
-            console.log(updatedPatient)
         }
         axios.put(`https://localhost:44369/api/Hospital/?Id=${id}`, updatedPatient)
             .then(function (response) {
                 console.log(response)
             })
-        console.log(patientUpdate);
         setPatientUpdate({firstName: "", lastName: "", DOB: "", phoneNumber: "", emergencyContact: ""});
     };
 
     return (
         <div className="update-container">
-            <FormElement label="Enter Id:" type="text" name="id" value={id} onChange={handleChange} />
+            <FormElement label="Enter Id:" type="text" name="id" value={id} handleChange={handleChange} />
             <SubmitButton className="submit-button" type="submit" onClick={onClick} buttontext="Get Patient" />
             <hr />
             <PatientTable patients={patient} />
             <hr />
-            <PatientForm patient={patientUpdate} onChange={handleChangeUpdate} onClick={submitUpdate} buttontext="Update record" />
+            <PatientForm patient={patientUpdate} handleChange={handleChangeUpdate} onClick={submitUpdate} buttontext="Update record" />
         </div>
 
     )

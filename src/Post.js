@@ -16,7 +16,8 @@ function Post() {
     const [patients, setPatients] = useState([]);
   
     const handleChange = (event) => {
-      setPatient({ ...patient, [event.target.name]: event.target.value });
+      const {name, value} = event.target;
+      setPatient({ ...patient, [name]: value });
     };
   
     const addPatients = (patient) => {
@@ -40,7 +41,7 @@ function Post() {
   
     return (
       <div className="App">
-        <PatientForm patient={patient} onChange={handleChange} onClick={handleSubmit} buttontext="Save"/>
+        <PatientForm patient={patient} handleChange={handleChange} onClick={handleSubmit} buttontext="Save"/>
         <PatientTable patients={patients} />
       </div>
     );

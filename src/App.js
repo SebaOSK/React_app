@@ -1,5 +1,4 @@
 import './App.css';
-import PatientForm from './Form.js';
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,6 +19,11 @@ function App() {
         </a>
         <div className='navbar-nav mr-auto'>
           <li className='nav-item'>
+            <Link to={"/patient"} className="nav-link">
+              Patient
+            </Link>
+          </li>
+          <li className='nav-item'>
             <Link to={"/add"} className="nav-link">
               Add
             </Link>
@@ -29,13 +33,20 @@ function App() {
               Update
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to={"/delete"} className="nav-link">
+              Delete
+            </Link>
+          </li>
         </div>
       </nav>
       <div className='container mt-3'>
         <Routes>
           <Route path="/" element={<GetAll />} />
-          <Route path="/add" element={<Post />}/>
-          <Route path="/update" element={<Update />}/>
+          <Route path="/patient" element={<GetById />} />
+          <Route path="/add" element={<Post />} />
+          <Route path="/update" element={<Update />} />
+          <Route path="/delete" element={<Delete />} />
         </Routes>
       </div>
     </div>
